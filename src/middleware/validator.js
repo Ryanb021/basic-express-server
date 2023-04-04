@@ -1,16 +1,15 @@
 'use strict';
 
-const validator = (request, response, next) => {
-  let name = name();
-  next();
+module.exports = (request, response, next) => {
+  const query = request.query.name;
+  if(query) {
+    next();
+  } else {
+    next('Invalid Request');
+  }
 };
-//function validator(request, response, next) {
-//  if (!request.query.message) {
-//    next('Please input a name');
-//  } else {
-//    request.query.message = request.query.message();
-//    next();
-//  }
-//}
 
-module.exports = validator;
+// const validator = (request, response, next) => {
+//   let name = 'name';
+//   next();
+// };

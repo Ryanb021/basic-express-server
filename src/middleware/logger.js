@@ -1,11 +1,6 @@
-'use striuct';
+'use strict';
 
-
-
-
-
-
-//function logger(request, response, next) {
-//  console.log('Express app works!');
-//  next();
-//}
+module.exports = (request, response, next) => {
+  console.log(request.method);
+  next();
+};

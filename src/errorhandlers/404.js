@@ -1,9 +1,7 @@
 'use strict';
 
-module.exports = (request, response, next) => {
-  response.status(404).send({
-    err: 404,
-    route: request.originalUrl,
-    message: 'Not Found',
-  });
+module.exports = (request, response) => {
+  console.log('404 error handler');
+  response.status(404);
+  response.end();
 };
