@@ -7,19 +7,19 @@ const validator = require('./middleware/validator.js');
 const notFound = require('./errorhandlers/404.js');
 const errorHandler = require('./errorhandlers/500.js');
 //const app = express();
-//const cors = require('cors');
+const cors = require('cors');
 
-
+server.use(cors());
 server.use(express.json());
 server.use(logger);
 
-server.get('/person', validator, (request, response) => {
+server.get('/person', validator, (request, response, next) => {
   response.status(200);
   response.send({ name: request.query.name.value });
 });
 
-server.use(errorHandler);
 server.use(notFound);
+server.use(errorHandler);
 
 module.exports = {
   server,
@@ -29,7 +29,7 @@ module.exports = {
 };
 
 // app.use(validator);
-// app.use(cors());
+
 
 //const data = [];
 
